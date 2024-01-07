@@ -20,6 +20,7 @@
 
     internal class Potion : Item
     {
+        protected override int InternalSortOrder { get { return 4; } }
         private PotionModifier modifier;
 
         public Potion(string name, Bitmap image) : base(ParseName(name), image) 

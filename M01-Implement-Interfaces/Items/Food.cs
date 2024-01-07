@@ -2,6 +2,7 @@
 {
     internal class Food : Item
     {
+        protected override int InternalSortOrder { get { return 3; } }
         private readonly bool ingredient = false;
 
         public Food(string resouceName, Bitmap image) : base(ParseResourceName(resouceName), image)

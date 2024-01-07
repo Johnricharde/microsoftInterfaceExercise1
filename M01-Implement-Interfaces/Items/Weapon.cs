@@ -7,8 +7,9 @@
         Axe
     }
 
-    internal class Weapon : Item
+    internal class Weapon : Item, IEquipable
     {
+        protected override int InternalSortOrder { get { return 2; } }
         private readonly Random random = new();
         private readonly WeaponClass weaponClass;
         private int attack = 0;
@@ -20,6 +21,7 @@
         public int Magic => magic;
         public int Mana => mana;
         public int Weight => weight;
+
 
         public Weapon(string resourceName, Bitmap image) : base(ParseResourceName(resourceName), image)
         {
@@ -50,5 +52,15 @@
             }
         }
 
+        public bool Equipped { get; set; }
+        public void Equip()
+        {
+            Equipped = true;
+        }
+
+        public void Unequip()
+        {
+            Equipped = false;
+        }
     }
 }

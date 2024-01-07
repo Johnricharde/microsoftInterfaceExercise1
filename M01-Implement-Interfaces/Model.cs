@@ -20,12 +20,20 @@ namespace Solution
         
         public string GetItemAction()
         {
+            if (selectedItems[0] is IEquipable)
+                return equip;
             return none;
         }
 
         public List<Item> GetEquipables()
         {
-            return inventory;
+            var items = new List<Item>();
+
+            foreach (Item item in inventory)
+                if (item is IEquipable)
+                    items.Add(item);
+
+            return items;
         }
 
         public List<Item> GetConsumables()
@@ -35,6 +43,7 @@ namespace Solution
 
         public List<Item> GetAllItems()
         {
+            inventory.Sort();
             return inventory;
         }
 
