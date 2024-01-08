@@ -18,9 +18,12 @@
         Speed
     }
 
-    internal class Potion : Item
+    internal class Potion : Item, IConsumable
     {
         protected override int InternalSortOrder { get { return 4; } }
+
+        public bool Consumed { get; set; }
+
         private PotionModifier modifier;
 
         public Potion(string name, Bitmap image) : base(ParseName(name), image) 
@@ -49,6 +52,11 @@
 
             }
             return name + append;
+        }
+
+        public void Consume()
+        {
+            Consumed = true;
         }
     }
 }
